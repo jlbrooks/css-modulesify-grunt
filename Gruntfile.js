@@ -6,10 +6,14 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         debug: true,
-        //extensions: ['.jsx'],
-        plugin: [
-          ['css-modulesify', {'output': 'output.css'}]
-        ]
+        // plugin: [
+        //   ['css-modulesify', {'output': 'output.css'}]
+        // ],
+        configure: function(b) {
+          b.plugin(require('css-modulesify'), {
+            output: './output.css'
+          });
+        }
       },
       dev: {
         src: ['*.js'],
